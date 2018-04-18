@@ -25,6 +25,18 @@
     <%= form.label :time %>
     <%= form.time_select :time, id: :dish_time %>
   </div>
+  <div class="field">
+    <%= form.label :restaurant_id %>
+    <%= form.select :restaurant_id, Restaurant.all.collect {|restaurant| [restaurant.name, restaurant.id]} %>
+  </div>
+ <div class="field">
+    <%= form.label "Ingredients" %>
+    <% @ingredients.each do |ingredient| %>
+      <%= check_box_tag "dish[ingredient_ids][]", ingredient.id, @dish.ingredients.include?(ingredient) %>
+      <%= ingredient.description %>
+    <% end %>
+ </div>
+
 
   <div class="actions">
     <%= form.submit %>
