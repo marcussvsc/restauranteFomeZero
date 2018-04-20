@@ -31,7 +31,7 @@
   </div>
  <div class="field">
     <%= form.label "Ingredients" %>
-    <% Ingredient.all.each do |ingredient| %>
+    <% @ingredients.each do |ingredient| %>
       <%= check_box_tag "dish[ingredient_ids][]", ingredient.id, @dish.ingredient_ids.include?(ingredient.id) %>
       <%= ingredient.description %>
     <% end %>

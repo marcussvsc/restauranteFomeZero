@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <strong>Restaurant:</strong>
+  <%= @dish.restaurant.name%>
+</p>
 <p>
   <strong>Description:</strong>
   <%= @dish.description %>
@@ -15,10 +18,18 @@
   <%= @dish.time %>
 </p>
 
+
 <p>
-  <strong>Restaurant</strong>
-  <%= @dish.restaurant.name%>
+  <strong>Ingredients:</strong>
+    <%@ingredients.each do |ingredient| %>
+    <ul style="list-style-type: none">
+    <%= ingredient.description %>
+    </ul>
+
+  <% end %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_dish_path(@dish) %> |
 <%= link_to 'Back', dishes_path %>

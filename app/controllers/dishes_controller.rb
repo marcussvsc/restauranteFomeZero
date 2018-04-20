@@ -4,25 +4,28 @@ class DishesController < ApplicationController
   # GET /dishes
   # GET /dishes.json
   def index
-    @dishes = Dish.all
+
+    @dishes  =Dish.all.order(:description)
+
   end
 
   # GET /dishes/1
   # GET /dishes/1.json
   def show
+
   end
 
   # GET /dishes/new
   def new
     @dish = Dish.new
-    @ingredients = Ingredient.all
-    @restaurants = Restaurant.all
+    @ingredients = Ingredient.all.order(:description)
+    @restaurants = Restaurant.all.order(:name )
   end
 
   # GET /dishes/1/edit
   def edit
-    @ingredients = Ingredient.all
-    @restaurants = Restaurant.all
+    @ingredients = Ingredient.all.order(:description)
+    @restaurants = Restaurant.all.order(:name )
   end
 
   # POST /dishes
@@ -75,4 +78,5 @@ class DishesController < ApplicationController
     def dish_params
       params.require(:dish).permit(:description, :value, :time, :restaurant_id, :ingredient_ids=>[])
     end
+
 end
